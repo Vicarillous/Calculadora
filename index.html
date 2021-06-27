@@ -6,301 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora</title>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            font-size: 35px;
-        }
-
-        body {
-            background-color: #282a36;
-        }
-
-        .calc-body {
-            background-color: #44475a;
-            width:50vw;
-            margin: 10px auto;
-            height: 90vh;
-            border-radius: 10px;
-
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: 7vh repeat(5, 1fr);
-            grid-template-areas: "tit tit tit tit"
-                                 "visor visor visor visor"
-                                 "col-1 col-2 col-3 col-4"
-                                 "col-1 col-2 col-3 col-4"
-                                 "col-1 col-2 col-3 col-4"
-                                 "col-1 col-2 col-3 col-4";
-        }
-
-        #titulo {
-            font-family: 'Roboto', sans-serif;
-            color: white;
-            text-align: center;
-            font-size: 40px !important;
-            grid-area: tit;
-        }
-
-        .visor {
-            background-color: white;
-            margin: 0 10px;
-            border-radius: 20px;
-            grid-area: visor;
-        }
-
-        .col-1 {
-            grid-area: col-1;
-            
-        }
-
-        .col-2 {
-            grid-area: col-2;
-            
-        }
-
-        .col-3 {
-            grid-area: col-3;
-            
-        }
-
-        .col-4 {
-            grid-area: col-4;
-            
-        }
-
-        .linha  {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-evenly;
-            align-items: center;
-        }
-
-        .linha-1 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: teal;
-        }
-        .linha-2 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: thistle;
-        }
-        .linha-3 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: tomato;
-        }
-        .linha-4 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: violet;          
-        }
-
-        .botoes {
-            width: 90%;
-            height: 20%;
-            text-align: center;
-            border-radius: 20px;
-        }
-
-        input {
-			width: 100%;
-			height: 100%;
-			color: black !important;
-			text-align: end;           
-		}
-
-        input:focus {
-            border: none;
-        }
-		
-		button {
-			width: 100%;
-			height: 100%;
-            background-color: transparent;
-            border: transparent;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: .3s;
-		}
-
-        button:hover {
-            background-color: rgba(0, 0, 0, 0.548);
-        }
-
-        #reset {
-            display: block;
-            width: 50%;
-            margin: 0 auto;
-            background-color: rgb(77, 77, 77);
-            border-radius: 0;
-        }
-
-        label {
-            position: absolute;
-            right: 27%;
-            text-align: end;
-            margin-top: 10px;
-            font-size: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="calc-body">
-        <h1 id="titulo">Calculadora</h1>
-        <div class="visor">
-            <label id="past-entrada" for="entrada" style="color: rgb(59, 59, 59)">--</label>
-            <input id="entrada" name="entrada">
+    <div class="corpo">
+        <div class="calc-body" id="calc-body">
+            <div class="box">
+                <div class="borda-externa">
+                    <h1 id="titulo">tilibra</h1>
+                    
+                </div>
+            </div>
+            <div class="box position-left">
+                <h2 id="modelo">TC05</h2> 
+            </div>  
+            <div class="visor" id="visor" onclick="focado()">
+                <label id="past-entrada" for="entrada" style="color: rgb(59, 59, 59)">--</label>
+                <input id="entrada" name="entrada" disabled>
+            </div>
+            <div class="col-1 linha">
+                <div id="div-btn-on-off" class="linha-1 botoes btn-on"><button class="btn-calc" id="btn-On-Off" onclick="focado()">ON</button></div>
+                <div class="linha-2 botoes"><button class="btn-calc" onclick="btnClick(7)">7</button></div>
+                <div class="linha-3 botoes"><button class="btn-calc" onclick="btnClick(4)">4</button></div>
+                <div class="linha-4 botoes"><button class="btn-calc" onclick="btnClick(1)">1</button></div>
+                <div class="linha-5 botoes"><button class="btn-calc" onclick="btnClick(0)">0</button></div>
+            </div>
+            <div class="col-2 linha">
+                <div class="linha-1 botoes btn-apagador"><button class="btn-calc" onclick="apagar()">C</button></div>
+                <div class="linha-2 botoes"><button class="btn-calc" onclick="btnClick(8)">8</button></div>
+                <div class="linha-3 botoes"><button class="btn-calc" onclick="btnClick(5)">5</button></div>
+                <div class="linha-4 botoes"><button class="btn-calc" onclick="btnClick(2)">2</button></div>
+                <div class="linha-5 botoes"><button class="btn-calc" onclick="btnClick('.')">.</button></div>
+            </div>
+            <div class="col-3 linha">
+                <div class="linha-1 botoes btn-apagador"><button class="btn-calc" id="reset" onclick="reset()">AC</button></div>
+                <div class="linha-2 botoes"><button class="btn-calc" onclick="btnClick(9)">9</button></div>
+                <div class="linha-3 botoes"><button class="btn-calc" onclick="btnClick(6)">6</button></div>
+                <div class="linha-4 botoes"><button class="btn-calc" onclick="btnClick(3)">3</button></div>
+                <div class="linha-5 botoes"><button class="btn-calc" onclick="maisMenos()">+/-</button></div>
+            </div>
+            <div class="col-4 linha">
+                <div class="linha-1 botoes simbolo"><button class="btn-calc" onclick="btnClick('/')">/</button></div>
+                <div class="linha-2 botoes simbolo"><button class="btn-calc" onclick="btnClick('*')">*</button></div>
+                <div class="linha-3 botoes simbolo"><button class="btn-calc" onclick="btnClick('-')">-</button></div>
+                <div class="linha-4 botoes simbolo"><button class="btn-calc" onclick="btnClick('+')">+</button></div>
+                <div class="linha-5 botoes simbolo btn-igual"><button class="btn-calc" onclick="igual()">=</button></div>
+            </div>
         </div>
-        <div class="col-1 linha">
-            <div class="linha-1 botoes"><button onclick="btnClick(7)">7</button></div>
-            <div class="linha-2 botoes"><button onclick="btnClick(4)">4</button></div>
-            <div class="linha-3 botoes"><button onclick="btnClick(1)">1</button></div>
-            <div class="linha-4 botoes"><button onclick="btnClick(0)">0</button></div>
+        <!--<div>
+            <button class="btn-menu" id="btn-menu" onclick="tgShowHide(false)"><img id="menu-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/VisualEditor_-_Icon_-_Menu.svg/768px-VisualEditor_-_Icon_-_Menu.svg.png"></button>
         </div>
-        <div class="col-2 linha">
-            <div class="linha-1 botoes"><button onclick="btnClick(8)">8</button></div>
-            <div class="linha-2 botoes"><button onclick="btnClick(5)">5</button></div>
-            <div class="linha-3 botoes"><button onclick="btnClick(2)">2</button></div>
-            <div class="linha-4 botoes"><button onclick="btnClick('.')">.</button></div>
-        </div>
-        <div class="col-3 linha">
-            <div class="linha-1 botoes"><button onclick="btnClick(9)">9</button></div>
-            <div class="linha-2 botoes"><button onclick="btnClick(6)">6</button></div>
-            <div class="linha-3 botoes"><button onclick="btnClick(3)">3</button></div>
-            <div class="linha-4 botoes"><button onclick="btnClick(' + ')">+</button></div>
-        </div>
-        <div class="col-4 linha">
-            <div class="linha-1 botoes"><button onclick="btnClick(' / ')">/</button></div>
-            <div class="linha-2 botoes"><button onclick="btnClick(' * ')">*</button></div>
-            <div class="linha-3 botoes"><button onclick="btnClick(' - ')">-</button></div>
-            <div class="linha-4 botoes"><button onclick="igual()">=</button></div>
-        </div>
-    </div>
-    <button id="reset" onclick="reset()">RESET</button>
-    <script>
-        setTimeout(carregou, 0);
-            
-            function carregou(){
-            console.log("Olá, bem-vindo ao log, aqui você encontra os arrays que eu deixei por ai, se divirta nessa bagunça :D");
-            }
+        <div class="calc-emc move" id="calc-emc">
+            <div class="tit-emc">
+                <h1 id="emc"><em>E = mc²</em></h1>
+                <button id="close" onclick="tgShowHide(true)">x</button>
+            </div>
+            <div class="input-massa input">
+                <div class="label-emc">Massa</div>
+                <input type="number" class="input-emc" id="massa" name="massa" onchange="calcEnergia()">
+            </div>
+            <div class="input-energia input right-botton-corner">
+                <div class="label-emc">Energia</div>
+                <input class="input-emc" id="energia" name="energia">
+            </div>
+        </div>-->
+    </div>                  
 
-        setInterval( Foca, 0 );
-		var info = document.getElementById("entrada");
-		var number;
-
-		function Foca() {
-			number = info.value;
-			info.focus();	
-		}
-
-        setInterval(apenasNumeros, 10);
-
-        function apenasNumeros() { /*Permite apenas numeros e os simbolos*/
-            info.value = (info.value).replace(/[^0-9\+\-\*\/\.\ ]/gi, '');
-        }
-		
-		function btnClick(valor) {
-			document.getElementById("entrada").value = (number + valor);
-		}
-        
-        function reset() {
-            info.value = '';
-            document.getElementById("past-entrada").innerHTML = "--";
-        }
-		
-		function igual() {
-            document.getElementById("past-entrada").innerHTML = info.value+" = ";
-            
-            console.log("");
-            console.log("---------------------------------");
-
-			console.log("O que foi digitado:");
-            console.log(number);
-			var separado = number.split(' ');
-            console.log("Vetor inicial:");
-            console.log(separado)
-            var soma = 0, multiplicacao = 0, res = 0;
-
-            for (var i = 0; i < separado.length; i++) {
-                if(separado[i] == '/') {
-                   res = parseFloat(separado[i-1]) / parseFloat(separado[i+1]);
-                   separado[i-1] = res;
-                   separado[i] = 0;
-                   separado[i+1] = res;
-                }
-
-            }
-
-            console.log("Vetores pós divisão:");
-            console.log(separado);
-            console.log(res);
-
-            for (var i = 0; i < separado.length; i++) {
-                if(separado[i] == '*') {
-                   res = parseFloat(separado[i-1]) * parseFloat(separado[i+1]);
-                   separado[i-1] = res;
-                   separado[i] = 0;
-                   separado[i+1] = res;
-                }
-
-            }
-
-            console.log("Vetores pós multiplicação:");
-            console.log(separado);
-            console.log(res);
-
-            for (var i = 0; i < separado.length; i++) {
-                if(separado[i] == '+') {
-                   res = parseFloat(separado[i-1]) + parseFloat(separado[i+1]);
-                   separado[i-1] = res;
-                   separado[i] = 0;
-                   separado[i+1] = res;
-                }
-            }
-
-            console.log("Vetores pós adição:");
-            console.log(separado);
-            console.log(res);
-
-            for (var i = 0; i < separado.length; i++) {
-                if(separado[i] == '-') {
-                   res = parseFloat(separado[i-1]) - parseFloat(separado[i+1]);
-                   separado[i-1] = res;
-                   separado[i] = 0;
-                   separado[i+1] = res;
-                }
-            }
-
-            console.log("Vetores pós subtração:");
-            console.log(separado);
-            console.log(res);
-            
-			/*console.log('Length: '+separado.length);
-			var soma = 0;
-			for (var i = 0; i < separado.length; i++) {
-				separado[i] = parseInt(separado[i]);
-				soma = soma + separado[i];
-                console.log(separado[i]);
-			}*/
-            
-            
-            console.log('resultado final: '+res);
-			info.value = res;	
-
-            
-		}
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
