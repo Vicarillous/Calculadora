@@ -53,23 +53,31 @@
                 <div class="linha-5 botoes simbolo btn-igual"><button class="btn-calc" onclick="igual()">=</button></div>
             </div>
         </div>
-        <!--<div>
-            <button class="btn-menu" id="btn-menu" onclick="tgShowHide(false)"><img id="menu-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/VisualEditor_-_Icon_-_Menu.svg/768px-VisualEditor_-_Icon_-_Menu.svg.png"></button>
+<!--
+        <div class="historico" id="historico">
+            Histórico
         </div>
-        <div class="calc-emc move" id="calc-emc">
-            <div class="tit-emc">
-                <h1 id="emc"><em>E = mc²</em></h1>
-                <button id="close" onclick="tgShowHide(true)">x</button>
+    -->
+        <div class="container" id="container-calc-emc">
+            <div class="calc-emc move" id="calc-emc">
+                <div class="tit-emc">
+                    <img id="emc" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Emc2.svg/800px-Emc2.svg.png">
+                </div>
+                <div class="input-massa input">
+                    <div class="label-emc">Massa</div>
+                    <input type="number" class="input-emc" id="massa" onchange="calcEnergia()" placeholder>
+                    <div class="label-emc">Kg</div>
+                </div>
+                <div class="input-energia input right-botton-corner">
+                    <div class="label-emc">Energia</div>
+                    <input class="input-emc" id="energia" onchange="calcMassa()" placeholder>
+                    <div class="label-emc">MJ</div>
+                </div>
             </div>
-            <div class="input-massa input">
-                <div class="label-emc">Massa</div>
-                <input type="number" class="input-emc" id="massa" name="massa" onchange="calcEnergia()">
-            </div>
-            <div class="input-energia input right-botton-corner">
-                <div class="label-emc">Energia</div>
-                <input class="input-emc" id="energia" name="energia">
-            </div>
-        </div>-->
+        </div>           
+        <div>
+            <button class="btn-menu" id="btn-menu" onclick="tgShowHide()"><img id="menu-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/VisualEditor_-_Icon_-_Menu.svg/768px-VisualEditor_-_Icon_-_Menu.svg.png"></button>
+        </div>
     </div>                  
 
     <script src="js/script.js"></script>
