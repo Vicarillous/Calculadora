@@ -234,7 +234,7 @@ function igual() {
     
 
     console.log('resultado final: ' + res);
-    addHistorico(info.value, res);
+    /*addHistorico(info.value, res);*/
     info.value = res;
     calculado = true;
     console.log(calculado);   
