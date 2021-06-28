@@ -80,6 +80,8 @@ function btnClick(valor) {
     enterPressionado = false;
 }
 
+
+
 function inserirValor(v) {
     var find = false;
         
@@ -109,6 +111,7 @@ function inserirValor(v) {
     }
 
     if (find == false) {
+        var split = (info.value).split("");
         var valorContemSimbolo = false;
         for (var i = 0; i < simbolosPermitidos.length; i++) {
             if (v == simbolosPermitidos[i]){
@@ -117,9 +120,8 @@ function inserirValor(v) {
         }
 
         if (valorContemSimbolo == true) {      
-            var split = (info.value).split("");          
+                
             var isRepetido = false;
-
             for (var i = 0; i <simbolosPermitidos.length; i++) {
                 if (split[(split.length)-2] == simbolosPermitidos[i]) {             
                     isRepetido = true;
@@ -127,18 +129,17 @@ function inserirValor(v) {
             }
 
             if (isRepetido == true) {
-                console.log("apaga");
                 split.pop();
                 split.pop();
                 split.pop();
             }
 
             info.value = split.join("");
-
             info.value = info.value + " " + v + " ";
         }
     }
 }
+
 
 function reset() {
     ligarCalc();
@@ -164,90 +165,98 @@ function maisMenos() {
 
 var separado;
 function igual() {
-    ligarCalc();  
-
-    document.getElementById("past-entrada").innerHTML = info.value + " = ";
-
-    console.log("");
-    console.log("---------------------------------");
-    console.log("O que foi digitado:");
-    console.log(info.value);
+    ligarCalc();
+    var lastIsSimbolo = false;
     separado = info.value.split(' ');
-    console.log("Vetor inicial:");
-    console.log(separado)
-    var res = 0;
-
-
-    if (separado.length == 1) {
-        res =  separado[0];
-    } else {
-        for (var i = 0; i < separado.length; i++) {
-            if (separado[i] == '/') {
-                res = parseFloat(separado[i - 1]) / parseFloat(separado[i + 1]);
-                separado[i - 1] = res;
-
-                separado.splice(i, 2);
-                i = 0;
-            }
-        }
-
-        console.log("Vetores pós divisão:");
-        console.log(separado);
-        console.log(res);
-
-        for (var i = 0; i < separado.length; i++) {
-            if (separado[i] == '*') {
-                res = parseFloat(separado[i - 1]) * parseFloat(separado[i + 1]);
-                separado[i - 1] = res;
-                separado.splice(i, 2);
-                i = 0;
-            }
-        }
-
-        console.log("Vetores pós multiplicação:");
-        console.log(separado);
-        console.log(res);
-
-        for (var i = 0; i < separado.length; i++) {
-            if (separado[i] == '-') {
-                separado[i] = '+';
-                separado[i + 1] = -1 * parseFloat(separado[i + 1]);
-            }
-        }
-
-        console.log("Transformado - para +");
-        console.log(separado);
-
-        for (var i = 0; i < separado.length; i++) {
-            if (separado[i] == '+') {
-                res = parseFloat(separado[i - 1]) + parseFloat(separado[i + 1]);
-                separado[i - 1] = res;
-                separado.splice(i, 2);
-                i = 0;
-            }
-        }
-
-        console.log("Vetores pós adição:");
-        console.log(separado);
-        console.log(res);
+    
+    if (separado[(separado.length)-1] == "") {
+        lastIsSimbolo = true;
     }
     
+    if (lastIsSimbolo == false) {
+        document.getElementById("past-entrada").innerHTML = info.value + " = ";
 
-    console.log('resultado final: ' + res);
-    /*addHistorico(info.value, res);*/
-    info.value = res;
-    calculado = true;
-    console.log(calculado);   
+        console.log("");
+        console.log("---------------------------------");
+        console.log("O que foi digitado:");
+        console.log(info.value);  
+        console.log("Vetor inicial:");
+        console.log(separado)
+        var res = 0;
+
+
+        if (separado.length == 1) {
+            res =  separado[0];
+        } else {
+            for (var i = 0; i < separado.length; i++) {
+                if (separado[i] == '/') {
+                    res = parseFloat(separado[i - 1]) / parseFloat(separado[i + 1]);
+                    separado[i - 1] = res;
+
+                    separado.splice(i, 2);
+                    i = 0;
+                }
+            }
+
+            console.log("Vetores pós divisão:");
+            console.log(separado);
+            console.log(res);
+
+            for (var i = 0; i < separado.length; i++) {
+                if (separado[i] == '*') {
+                    res = parseFloat(separado[i - 1]) * parseFloat(separado[i + 1]);
+                    separado[i - 1] = res;
+                    separado.splice(i, 2);
+                    i = 0;
+                }
+            }
+
+            console.log("Vetores pós multiplicação:");
+            console.log(separado);
+            console.log(res);
+
+            for (var i = 0; i < separado.length; i++) {
+                if (separado[i] == '-') {
+                    separado[i] = '+';
+                    separado[i + 1] = -1 * parseFloat(separado[i + 1]);
+                }
+            }
+
+            console.log("Transformado - para +");
+            console.log(separado);
+
+            for (var i = 0; i < separado.length; i++) {
+                if (separado[i] == '+') {
+                    res = parseFloat(separado[i - 1]) + parseFloat(separado[i + 1]);
+                    separado[i - 1] = res;
+                    separado.splice(i, 2);
+                    i = 0;
+                }
+            }
+
+            console.log("Vetores pós adição:");
+            console.log(separado);
+            console.log(res);
+        }
+        
+
+        console.log('resultado final: ' + res);
+        addHistorico(info.value, res);
+        info.value = res;
+        calculado = true;
+        console.log(calculado);
+    }
 }
 
-/*function addHistorico(equacao, res) {
+function addHistorico(equacao, res) {
     console.log("oi");
     var calculo = document.createElement("p");
     var text = document.createTextNode(equacao +" = " + res);
     calculo.appendChild(text);
-    var element = document.getElementById("historico");
+    var element = document.getElementById("cx-celulas");
+    calculo.setAttribute("class", "celula");
     element.appendChild(calculo);
-}*/
+}
 
 //* * Parte da calculadora E = mc2 */
 
