@@ -240,14 +240,14 @@ function igual() {
     console.log(calculado);   
 }
 
-function addHistorico(equacao, res) {
+/*function addHistorico(equacao, res) {
     console.log("oi");
     var calculo = document.createElement("p");
     var text = document.createTextNode(equacao +" = " + res);
     calculo.appendChild(text);
     var element = document.getElementById("historico");
     element.appendChild(calculo);
-}
+}*/
 
 //* * Parte da calculadora E = mc2 */
 
