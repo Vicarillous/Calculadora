@@ -1,7 +1,9 @@
-setTimeout(introConsole, 0);
-function introConsole() {
+//** Mensagem para quem usar o log */
+setTimeout(function introConsole() {
     console.log("Olá, bem-vindo ao log, aqui você encontra os console.log que eu deixei por ai, se divirta nessa bagunça :D");
-}
+}, 0);
+
+//** Declaração de variáveis e o método pra focar */
 
 var info = document.getElementById("entrada");
 var btnOnOff = document.getElementById("btn-On-Off");
@@ -25,8 +27,11 @@ function focado() {
     }
 }
 
+//** valores permitios */
+
 const numerosPermitidos = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '.'];
 const simbolosPermitidos = ['+', '-', '*', '/'];
+//**Fim */
 
 function apagar() {
     ligarCalc();
@@ -41,6 +46,8 @@ function apagar() {
         info.value = 0;
     }
 }
+
+//** Métodos leitores */
 
 var enterPressionado = false;
 document.addEventListener('keydown', (event) => {
@@ -80,7 +87,7 @@ function btnClick(valor) {
     enterPressionado = false;
 }
 
-
+//** Parte de entrada e verificação dos valores e símbolos */
 
 function inserirValor(v) {
     var find = false;
@@ -140,6 +147,7 @@ function inserirValor(v) {
     }
 }
 
+//** Botões */
 
 function reset() {
     ligarCalc();
@@ -163,6 +171,8 @@ function maisMenos() {
     info.value = split.join(" ");
 }
 
+//** Calcula */
+
 var separado;
 function igual() {
     ligarCalc();
@@ -173,7 +183,7 @@ function igual() {
         lastIsSimbolo = true;
     }
     
-    if (lastIsSimbolo == false) {
+    if (lastIsSimbolo == false && calculado == false) {
         document.getElementById("past-entrada").innerHTML = info.value + " = ";
 
         console.log("");
@@ -248,6 +258,8 @@ function igual() {
     }
 }
 
+//** Adiciona o histórico */
+
 function addHistorico(equacao, res) {
     console.log("oi");
     var calculo = document.createElement("p");
@@ -291,4 +303,15 @@ function calcMassa(){
     var massa = document.getElementById("massa");
     console.log(calcMassa);
     massa.value = calcMassa;
+}
+
+
+//*? Seção de avisos */
+
+function entendi() {
+    document.getElementById("avisos").style.display = "none";
+}
+
+function help() {
+    document.getElementById("avisos").style.display = "block";
 }

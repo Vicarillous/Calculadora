@@ -52,6 +52,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .position-left {
@@ -74,7 +75,7 @@ body {
 }
 
 #modelo {
-    font-size: 60%;
+    font-size: 50%;
 }
 
 .visor {
@@ -157,6 +158,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.borda-externa:hover, #titulo:hover {
+    border-color: #50fa7b;
+    color: #50fa7b;
+    transition: .5s;
 }
 
 #entrada {
@@ -366,4 +373,62 @@ input[type=number] {
     #titulo {
         font-size: 50% !important;
     }
-  }
+}
+
+/** Calculadora simples */
+
+.agr-sim-a-calculadora-pedida {
+    margin: 20px;
+}
+
+.agr-sim-a-calculadora-pedida input {
+    font-size: initial;
+    color: black !important;
+}
+
+.agr-sim-a-calculadora-pedida input[type=text] {
+    width: 100px;
+}
+
+/** Avisos */
+
+.avisos {
+    position: fixed;
+    top: 0px;
+    z-index: 10;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000000e5;
+    overflow: auto;
+    padding: 10px 20px;
+
+}
+
+ul {
+    margin-left: 30px;
+}
+
+li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+
+li strong {
+    font-size: inherit;
+    color: #bd93f9;
+}
+
+#entendi {
+    display: block;
+    margin: 0 auto;
+    background-color: #50fa7b;
+    border: none;
+    padding: 10px;
+    color: #282a36;
+    cursor: pointer;
+}
+
+#entendi:hover {
+    background-color: #3dce61;
+}

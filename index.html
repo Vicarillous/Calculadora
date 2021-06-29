@@ -10,16 +10,46 @@
     <link rel="shortcut icon" type="image/x-icon" href="https://i.ibb.co/2sbS35h/image.png">
 </head>
 <body>
+    <div class="avisos" id="avisos">
+        <h1 style="text-align: center; color: #ff5555; font-weight: 800; font-size: 40px;">AVISOS</h1>
+        <ul>
+            <li>A calculadora aceita números tanto pelos botões quanto pelos teclados;</li>
+            <li>Para que a calculadora aceite pelo teclado, ligue-a clicando no botão on, clicando no visor, ou em qualquer outro botão da calculadora, a borda deve ficar <strong>roxa</strong>;</li>
+            <li>Funcionalidades:
+                <ul>
+                    <li>Realiza as quatro operações, seguindo a ordem das prioridades matemáticas;</li>
+                    <li>Ex: 2+5*7-8+4/2+4-6 = 29 (primeiro * e /, depois + e -)</li>
+                    <li>É possível continuar a calcular após obter um resultando clicando em qualquer um dos símbolos;</li>
+                    <li>Em resumo, ela funciona praticamente igual a uma calculadora normal, o <strong>.</strong> serve para decimais, o <strong>+/-</strong> inverte os sinais, <strong>C</strong> apaga um número/símbolo de cada vez e o <strong>AC</strong> apaga todos de uma vez;</li>
+                    <li>A ideia de existir o botão <strong>ON</strong> foi apenas para deixar um 4x5 perfeito.</li>
+                </ul>
+            <li>
+                Outras coisas legais:
+                <ul>
+                    <li>A calculadora tem um histórico que se auto incrementa, ao chegar em um certo tamanho, aparece a scrollbar, não queremos que esse histórico faça uma ponte até a lua 😉</li>
+                    <li>Uma <strong style="color: #ffb86c">CALCULADORA DE E = MC² !!</strong>. Por que? Bom, dou créditos a um amigo meu que disse que isso não seria uma calculadora se ela não calculasse E = MC² (Ela não exibe valores muitos otimistas, mas realmente calcula de verdade 😎)</li>
+                    <li><strong style="color: #ff5555;">COMPATÍVEL COM CELULAR:</strong> Quem nunca quis pode usar uma calculadora estilosa igual a essa no celular? (infelizmente o histórico e o E = MC² não estão disponíveis para telas pequenas, pois não tive tempo de finalizar, me desculpem 😥)</li>
+                </ul>
+            </li>
+            <li>Ademais, a calculadora tem funcionalidades bem legais que a tornam bem usável, corrigi muitos bugs no processo, como a própria forma como ela calcula, inserir dois síbolos seguidos <strong>(+ *)</strong>, tentar calcular sem o último digito ser um número <strong>(2 + )</strong>, digitar um número solo, a animação da calculadora, verificação de quais digitos são permitidos, etc...</li>
+            </li>
+            <li>Caso queira ler isso tudo novamente, bastar clicar na marca <strong style="color: #50fa7b;">tilibras.</strong></li>
+            <li>Sim, tudo isso foi feito por mim, Vinícius</li>
+        </ul>
+        <button id="entendi" onclick="entendi()">Entendi!</button>
+        <ul style="margin-top: 20px;">
+            <li>Quem quiser bater um papo, me chama no zap 😉 <strong>(67) 99692-6393</strong></li>
+        </ul>
+    </div>
     <div class="corpo">
         <div class="calc-body" id="calc-body">
-            <div class="box">
+            <div class="box" onclick="help()">
                 <div class="borda-externa">
-                    <h1 id="titulo">tilibra</h1>
-                    
+                    <h1 id="titulo">tilibra</h1>   
                 </div>
             </div>
             <div class="box position-left">
-                <h2 id="modelo">TC05</h2> 
+                <h2 id="modelo">Vinícius<br>Diniz</h2> 
             </div>  
             <div class="visor" id="visor" onclick="focado()">
                 <label id="past-entrada" for="entrada" style="color: rgb(59, 59, 59)">--</label>
@@ -79,9 +109,18 @@
         </div>           
         <div>
             <button class="btn-menu" id="btn-menu" onclick="tgShowHide()"><img id="menu-icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/VisualEditor_-_Icon_-_Menu.svg/768px-VisualEditor_-_Icon_-_Menu.svg.png"></button>
-        </div>
-    </div>                  
-
+        </div>  
+    </div>
+    <div class="agr-sim-a-calculadora-pedida">
+        <h2>Calculadora pedida pelo professor <strong style="font-size: 18px;">(se não aceitar a de cima, tem que aceitar essa)</strong></h2>
+        <input type="text" id="num1" placeholder="Número 1">
+        <input type="text" id="num2" placeholder="Número 2">
+        <input type="submit" id="submit" onclick="calcular()" value="Calcular">
+        <p>Resultado:</p>
+        <p id="resultado"></p>
+    </div>
+    
+    <script src="js/calcSimples.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
