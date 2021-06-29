@@ -37,10 +37,12 @@ function apagar() {
     ligarCalc();
 
     var split = (info.value).split("");
-    if (split[(split.length) - 2] == " ") {
+    if (split[(split.length) - 1] == " ") {
+        split.pop();
         split.pop();
     }
     split.pop();
+    console.log(split);
     info.value = split.join("");
     if ((info.value) == "") {
         info.value = 0;
@@ -60,15 +62,7 @@ document.addEventListener('keydown', (event) => {
     }
 
     if (teclaPressionada == "Backspace") {
-        var split = (info.value).split("");
-        if (split[(split.length) - 2] == " ") {
-            split.pop();
-        }
-        split.pop();
-        info.value = split.join("");
-        if ((info.value) == "") {
-            info.value = 0;
-        }
+        apagar();
     }
 
     if (estaLigado == true && teclaPressionada != "Enter" ) {
