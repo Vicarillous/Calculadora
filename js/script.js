@@ -255,6 +255,9 @@ function igual() {
         info.value = res;
         calculado = true;
         console.log(calculado);
+        if (res == "Infinity") {
+            document.getElementById("por-zero").classList.add("por-zero");
+        }
     }
 }
 
