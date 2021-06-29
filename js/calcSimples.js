@@ -10,4 +10,4 @@ function calcular() {
     document.getElementById("resultado").innerHTML = "Soma: " + soma + "<br> Subtração: " + subtracao + "<br> Divisão: " + divisao + "<br> Multiplicação: " + multiplicacao;
 }
 
-//* Para não ficar dificil de encontrar o que é realmente importante, separei ele nesse arquivo separado */
+//* Para não ficar dificil de encontrar o que é realmente importante, separei ela nesse arquivo separado */
