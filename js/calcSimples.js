@@ -9,3 +9,5 @@ function calcular() {
     multiplicacao = num1.value * num2.value;
     document.getElementById("resultado").innerHTML = "Soma: " + soma + "<br> Subtração: " + subtracao + "<br> Divisão: " + divisao + "<br> Multiplicação: " + multiplicacao;
 }
+
+//* *

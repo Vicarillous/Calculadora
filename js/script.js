@@ -264,7 +264,7 @@ function igual() {
 //** Adiciona o histórico */
 
 function addHistorico(equacao, res) {
-    console.log("oi");
+    console.log("Adicionado valor ao histórico");
     var calculo = document.createElement("p");
     var text = document.createTextNode(equacao +" = " + res);
     calculo.appendChild(text);

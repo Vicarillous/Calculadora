@@ -433,6 +433,10 @@ li strong {
     background-color: #3dce61;
 }
 
+#por-zero {
+    display: none;
+}
+
 .por-zero {
     background-color: #ff5555;
     position: fixed;
@@ -440,7 +444,7 @@ li strong {
     z-index: 20;
     width: 100vw;
     height: 100vh;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     flex-direction: column;
 }
