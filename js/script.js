@@ -42,7 +42,6 @@ function apagar() {
         split.pop();
     }
     split.pop();
-    console.log(split);
     info.value = split.join("");
     if ((info.value) == "") {
         info.value = 0;
